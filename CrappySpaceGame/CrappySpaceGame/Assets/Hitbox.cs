@@ -9,15 +9,16 @@ public class Hitbox : MonoBehaviour
     public GameObject orbRed;
     public GameObject orbBlue;
     public Player player;
-    
+
     // Initialize the private variables
-    bool isActive;
+    [HideInInspector]
+    public bool isActive;
     float hitAlarm;
 
     // Check for collision
     void OnTriggerEnter(Collider other)
     {
-        if (isActive)
+        if (isActive && other.tag != "Border")
         {
             hitAlarm = hitCooldown;
             player.shieldAlarm = player.shieldCooldown;

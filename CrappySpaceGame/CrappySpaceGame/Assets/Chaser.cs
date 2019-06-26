@@ -11,6 +11,7 @@ public class Chaser : MonoBehaviour
     public states enemyState;
     public Vector2 movementSpeed;
     public Transform hitbox;
+    public Transform player;
 
     // Initialize the private variables
     Rigidbody rb;
@@ -24,6 +25,7 @@ public class Chaser : MonoBehaviour
         enemy = GetComponent<Enemy>();
         speed = Random.Range(movementSpeed.x, movementSpeed.y);
         hitbox = GameObject.FindGameObjectWithTag("IkHaatMnLeven").transform;
+        player = GameObject.FindGameObjectWithTag("GodHelpMij").transform;
     }
 
     // Run this code every single frame
@@ -33,8 +35,8 @@ public class Chaser : MonoBehaviour
         {
             // The default enemy state
             case states.DEFAULT:
-                enemy.Follow(hitbox, speed, rb);
-                enemy.Die();
+                enemy.Follow(hitbox, player, speed, rb);
+                enemy.Die(true);
                 break;
         }
     }

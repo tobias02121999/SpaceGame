@@ -75,8 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b627213e903bf459430129d9e00620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
-  mineSpawnChance: {x: 0, y: 4}
+  hp: 6
+  mineSpawnChance: {x: 0, y: 2}
   mine: {fileID: 835980694363099353, guid: e066188f5cd4b9a4ca4131a98a4b8c49, type: 3}
 --- !u!114 &4764756525659142774
 MonoBehaviour:
@@ -93,6 +93,9 @@ MonoBehaviour:
   enemyState: 0
   movementSpeed: {x: 1, y: 5}
   movementDir: 1
+  projectile: {fileID: 1323786080680729711, guid: b5437d6e600895f47ae53c68d9b6063b,
+    type: 3}
+  shootCooldown: 75
 --- !u!1 &4764756526565425745
 GameObject:
   m_ObjectHideFlags: 0

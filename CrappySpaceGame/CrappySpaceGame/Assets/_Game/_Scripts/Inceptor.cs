@@ -11,6 +11,10 @@ public class Inceptor : MonoBehaviour
     public states enemyState;
     public Vector2 movementSpeed;
     public int movementDir;
+    public GameObject projectile;
+    public int shootCooldown;
+    public float distance;
+    public bool isMine;
 
     // Initialize the private variables
     Rigidbody rb;
@@ -33,7 +37,8 @@ public class Inceptor : MonoBehaviour
             // The default enemy state
             case states.DEFAULT:
                 enemy.Move(speed, movementDir, rb);
-                enemy.Die();
+                enemy.Die(true);
+                enemy.Shoot(projectile, movementDir, shootCooldown, distance, isMine);
                 break;
         }
     }

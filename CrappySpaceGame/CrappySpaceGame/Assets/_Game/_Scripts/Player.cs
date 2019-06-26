@@ -66,6 +66,8 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public float shieldAlarm;
 
+    public GameObject tutorialText;
+
     // Initialize the private variables
     Rigidbody rb;
 
@@ -99,6 +101,9 @@ public class Player : MonoBehaviour
 
         ammoText.text = "Mines: " + ammo;
         hpText.text = "Health: " + hp;
+
+        tutorialText.SetActive(Input.GetButton("Select"));
+        Debug.Log(Input.GetButton("Select"));
     }
 
     // Move an object based on axis input
@@ -140,6 +145,7 @@ public class Player : MonoBehaviour
             var script = obj.GetComponent<Projectile>();
 
             script.direction = dir;
+            script.isFriendly = true;
 
             float speed = 0f;
             switch (dir)

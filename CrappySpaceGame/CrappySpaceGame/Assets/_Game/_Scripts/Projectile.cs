@@ -11,6 +11,11 @@ public class Projectile : MonoBehaviour
     [HideInInspector]
     public int direction = 1;
 
+    public bool isFriendly;
+    public bool isNeutral;
+
+    GameObject player;
+
     // Initialize the private variables
     Rigidbody rb;
 
@@ -18,12 +23,17 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Run this code every single frame
     void FixedUpdate()
     {
         Move(movementSpeed, rb); // Move the projectile
+
+        var dist = Vector3.Distance(transform.position, player.transform.position);
+        if (dist >= 50f)
+            Destroy(this.gameObject);
     }
 
     // Move the projectile
@@ -45,8 +55,23 @@ public class Projectile : MonoBehaviour
                 break;
 
             case "Enemy":
-                other.transform.parent.GetComponentInParent<Enemy>().hp -= damage;
-                Destroy(this.gameObject);
+                if (isFriendly || isNeutral)
+                {
+                    other.transform.parent.GetComponentInParent<Enemy>().hp -= damage;
+                    Destroy(this.gameObject);
+                }
+                break;
+
+            case "GodHelpMij":
+                if (!isFriendly || isNeutral)
+                {
+                    var script = other.GetComponent<Player>();
+                    if (!script.shieldActive)
+                    {
+                        script.hp--;
+                        Destroy(this.gameObject);
+                    }
+                }
                 break;
         }
     }

@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b627213e903bf459430129d9e00620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 2
   mineSpawnChance: {x: 0, y: 4}
   mine: {fileID: 835980694363099353, guid: e066188f5cd4b9a4ca4131a98a4b8c49, type: 3}
 --- !u!114 &7524144627456925219
@@ -78,8 +78,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: 0
-  movementSpeed: {x: 3, y: 4}
+  movementSpeed: {x: 5, y: 7}
   hitbox: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &3398301069658034427
 GameObject:
   m_ObjectHideFlags: 0

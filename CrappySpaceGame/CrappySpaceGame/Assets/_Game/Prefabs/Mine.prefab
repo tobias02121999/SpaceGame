@@ -64,6 +64,8 @@ MonoBehaviour:
   movementSpeed: 15
   damage: 10
   direction: 1
+  isFriendly: 0
+  isNeutral: 1
 --- !u!135 &8333750402894000475
 SphereCollider:
   m_ObjectHideFlags: 0
